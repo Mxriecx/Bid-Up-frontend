@@ -1,59 +1,47 @@
-# Bidup
+🧩 BidUp
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.2.
+BidUp es una aplicación web moderna de subastas en línea que permite a los usuarios ofertar por productos de diferentes categorías, gestionar sus perfiles y participar en una comunidad activa de compradores y vendedores.
+El proyecto combina un frontend dinámico en Angular con un backend robusto desarrollado en Node.js, Express y MongoDB.
 
-## Development server
+🚀 Características principales
 
-To start a local development server, run:
+🛍️ Exploración de productos: visualiza artículos disponibles clasificados por categorías (tecnología, arte, hogar, electrodomésticos, etc.).
 
-```bash
-ng serve
-```
+💸 Sistema de pujas (bids): los usuarios pueden realizar ofertas en tiempo real.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+👥 Gestión de usuarios: registro, inicio de sesión y perfiles personalizados.
 
-## Code scaffolding
+⭐ Valoraciones y reseñas: los usuarios pueden dejar comentarios y puntuaciones sobre los productos.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+🖼️ Soporte multimedia: subida y visualización de imágenes para cada producto.
 
-```bash
-ng generate component component-name
-```
+🔒 Seguridad: contraseñas cifradas y validación de autenticación JWT (si lo tienes o planeas agregarlo).
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+🧱 Tecnologías utilizadas
+Frontend
 
-```bash
-ng generate --help
-```
+Angular 17+
 
-## Building
+TypeScript
 
-To build the project run:
+HTML5, SCSS
 
-```bash
-ng build
-```
+Angular Material o Bootstrap (según lo que uses)
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Comunicación con API REST mediante HttpClient
 
-## Running unit tests
+Backend
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Node.js
 
-```bash
-ng test
-```
+Express.js
 
-## Running end-to-end tests
+MongoDB con Mongoose
 
-For end-to-end (e2e) testing, run:
+bcryptjs (encriptación de contraseñas)
 
-```bash
-ng e2e
-```
+CORS habilitado para comunicación con frontend
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
-## Additional Resources
+Mockup:
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
