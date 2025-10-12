@@ -1,4 +1,4 @@
 export interface Credencials {
-    email: string;
-    password: string;   
+    emaillogin :string;
+    passwordlogin :string;
 }

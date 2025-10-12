@@ -6,7 +6,7 @@ import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class Productservice {
 //inyeccion de dependencias y/o directivas de Angular
 
   private _httpClient = inject(HttpClient);
@@ -14,7 +14,6 @@ export class ProductService {
   // Definir la ruta de acceso al backend
 
   private apiUrl =  environment.appUrl;
-
 
   // metodos para hacer las peticiones :
 
