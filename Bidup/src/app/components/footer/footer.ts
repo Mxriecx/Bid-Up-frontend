@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-navbar', //la etiqueta de html
+  selector: 'app-footer',
   imports: [RouterLink],
-  templateUrl: './navbar.html',
-  styleUrl: './navbar.css'
+  templateUrl: './footer.html',
+  styleUrl: './footer.css'
 })
-export class Navbar {
+export class Footer {
 
 }
