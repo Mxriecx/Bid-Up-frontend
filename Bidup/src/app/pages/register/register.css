@@ -80,3 +80,63 @@ section {
 .Form-login a:hover {
   text-decoration: underline;
 }
+
+/* Responsivo */
+@media (max-width: 1024px) {
+  section {
+    padding: 40px 20px;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .Form-login {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+
+@media (max-width: 768px) {
+  * {
+    padding: 18px;
+  }
+
+  .Form-login {
+    padding: 25px 20px;
+    box-shadow: 5px 10px 25px rgba(0, 0, 0, 0.4);
+  }
+
+  .Form-login h5 {
+    font-size: 1.2em;
+  }
+}
+
+@media (max-width: 480px) {
+  * {
+    padding: 12px;
+  }
+
+  section {
+    padding: 25px 10px;
+    align-items: flex-start;
+  }
+
+  .Form-login {
+    border-radius: 12px;
+    padding: 20px 15px;
+    box-shadow: 4px 8px 20px rgba(0, 0, 0, 0.35);
+  }
+
+  .controls {
+    font-size: 0.9em;
+    padding: 10px;
+  }
+
+  .buttons {
+    height: 42px;
+    font-size: 0.95em;
+  }
+
+  .Form-login p {
+    margin-top: 12px;
+  }
+}
