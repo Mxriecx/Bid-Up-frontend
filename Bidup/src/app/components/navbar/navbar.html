@@ -1,0 +1,64 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg" style="background-color:#08253D;">
+  <div class="container-fluid px-4">
+    <!-- Brand -->
+    <a class="navbar-brand d-flex align-items-center text-white fw-bold" href="#">
+      <img src="logo.png" alt="bid up logo" class="img-fluid" style="max-height: 32px;">
+    </a>
+
+    <!-- Toggler (solo móvil) -->
+    <button
+      class="navbar-toggler border-0 text-white d-lg-none"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+      <i class="bi bi-list fs-3"></i>
+    </button>
+
+    <!-- Contenido -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="d-flex w-100 align-items-center gap-3 my-2 my-lg-0 flex-lg-row flex-column">
+        <!-- Buscador -->
+        <form class="d-flex flex-grow-1" role="search" style="max-width:550px; margin-left:auto; margin-right:auto;">
+          <div class="input-group rounded-pill overflow-hidden w-100">
+            <input
+              class="form-control border-0"
+              type="search"
+              placeholder="Buscar productos..."
+              aria-label="Buscar"
+              style="background-color:#f1f3f4;">
+            <button class="btn btn-light border-0 px-3" type="submit">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+        </form>
+
+        <!-- CTA -->
+        <a href="#" class="btn btn-warning rounded-pill fw-semibold px-3">
+          Subastar un artículo
+        </a>
+
+        <!-- Lista de enlaces -->
+        <nav class="mt-2 mt-lg-0">
+          <ul class="navbar-nav ms-lg-3 text-center text-lg-start">
+            <li class="nav-item"><a class="nav-link text-white" routerLink="/">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link text-white" routerLink="/register">¡Regístrate!</a></li>
+            <li class="nav-item"><a class="nav-link text-white" routerLink="/login">Inicia Sesión</a></li>
+            <li class="nav-item"><a class="nav-link text-white" routerLink="/products">Productos</a></li>
+            <li class="nav-item"><a class="nav-link text-white" routerLink="/reviews">Opiniones</a></li>
+            <li class="nav-item"><a class="nav-link text-white" routerLink="/admin">Dashboard</a></li>
+          </ul>
+        </nav>
+
+        <!-- Tres líneas en pastilla (siempre visible en desktop) -->
+        <a href="#" class="d-none d-lg-inline-flex align-items-center justify-content-center rounded-pill"
+           style="width:56px;height:36px;background:#fff;">
+          <i class="bi bi-list" style="font-size:1.4rem;color:#082A40;line-height:1;"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
