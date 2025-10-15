@@ -1,0 +1,23 @@
+img {
+   width: 100%;
+    height: 300px; /* ajusta el alto del carrusel */
+    object-fit: contain; /* llena el espacio manteniendo proporción */
+ 
+}
+.carousel {
+  
+
+  border-radius: 50px;
+
+ 
+}
+
+  .carousel-caption h2 {
+    font-size: 1.5rem; /* texto más pequeño */
+
+  }
+  .carousel-caption .btn {
+    padding: 6px 14px;
+    font-size: 0.9rem;
+   
+  }

@@ -14,8 +14,9 @@
 
 body{
     background-color: var(--colorfondo);
-    margin: 0;
+    margin: 5px 5px 5px 5px ;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Encode Sans SC', sans-serif;
+    overflow-x: hidden;
 }
