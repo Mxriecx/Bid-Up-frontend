@@ -1,3 +1,7 @@
-body{
+body {
   overflow-x: hidden;
+}
+
+header {
+ margin: 5px;
 }

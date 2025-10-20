@@ -1,0 +1,22 @@
+main {
+    border: solid red;
+    width: 100vw;
+    height: 100vh;
+}
+
+.formulario{
+    border : solid blue;
+    width: 50%;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.btn{
+    background: #08253d;
+    Color : white;
+    font-weight: 400;
+
+
+}
