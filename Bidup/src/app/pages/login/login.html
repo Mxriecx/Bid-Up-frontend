@@ -1,9 +1,17 @@
-<section class="Form-login">
-
+<form class="Form-login" [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
   <h5>Ingresa</h5>
-  <input class="controls"   type="text" name="user" value="" placeholder="Usuario">
-  <input class="controls"   type="password" name="Password" value="" placeholder="Contraseña">
-  <input class="buttons" type="submit" name="" value="Ingresar">
-  <p><a href="#">Olvidaste tu contraseña</a></p>
-
-</section>
+  <input
+    class="controls"
+    type="text"
+    formControlName="emailLogin"
+    placeholder="Usuario"
+  >
+  <input
+    class="controls"
+    type="password"
+    formControlName="passwordLogin"
+    placeholder="Contrasena"
+  >
+  <input class="buttons" type="submit" value="Ingresar">
+  <p><a href="#">Olvidaste tu contrasena</a></p>
+</form>
