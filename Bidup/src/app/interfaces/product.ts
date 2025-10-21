@@ -9,7 +9,7 @@ export interface Product {
     initialPrice :number,
     finalPrice?: number,
     state? :string,
-    categories? :string,
+    category? :string,
     seller :string  // preguntar si seria un ID 
     
 }

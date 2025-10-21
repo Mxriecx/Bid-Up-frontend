@@ -1,0 +1,56 @@
+
+.row {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;        /* Scroll horizontal si hay muchas cards */
+  gap: 15px;
+  padding: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  justify-content: flex-start;
+  scroll-behavior: smooth;
+}
+
+
+.card {
+  padding: 0;
+  flex: auto;
+  width: 12rem;            
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  background-color: rgb(234, 194, 102);
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-img-top {
+  height: 150px;        
+  object-fit: auto;
+  border-radius: 8px 8px 0 0;
+  /* border-top-right-radius: 10px; */
+  /* margin-top: 5px; */
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.card-title {
+  font-size: 0.95rem;
+  margin-bottom: 5px;
+  font-weight: 900;
+}
+
+.card-text {
+  font-size: 0.8rem;
+ font-weight: 550;
+ color: rgb(38, 38, 38);
+}
+
+.btn {
+  font-size: 0.8rem;
+  padding: 4px 8px;
+}
