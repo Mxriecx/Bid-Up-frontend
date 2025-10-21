@@ -49,16 +49,17 @@ redirecTo(){
   }
   }
 
-  salirLogout(){
-  localStorage.removeItem("token");
-  alert("cierre de sesion exitoso");
-  this._router.navigate(["/login"]);
-}
+  // 2.5 el cierre de sesión
+  logout(){
+    localStorage.removeItem('token');
+    alert('Cierre de sesión exitoso, Vuelve pronto!');
+    this._router.navigate(['/login']);
+  }
 
-isLoggedIn(){
-  return this.getToken() ? true : false;
+  //2.6 Validar si el usuario ya inició sesión
+  isLoggedIn(){
+    return this.getToken() ? true : false;
+  }//si no hay token, no esta logueado, si sí lo hay, entonces sí inició sesión
+  
 
-  //si no hay token no esta logueado, sisi lo hay inicio de sesion
 }
-}
-

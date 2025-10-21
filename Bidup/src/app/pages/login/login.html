@@ -1,30 +1,23 @@
 <main>
-    <form class="formulario" [formGroup]="LoginForm" (ngSubmit)="handleSubmit()">
+  <form class="formulario" [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
+    <h1>INICIAR SESIÓN</h1>
 
-        <h1>INICIAR SESIÓN</h1>
+    <div class="mb-3 nombre">
+      <label for="exampleInputEmail1" class="form-label letra">Correo Electrónico</label>
+      <input type="email" class="form-control" formControlName="emailLogin" placeholder="email" />
+    </div>
 
-        <div class="mb-3 nombre">
-            <label for="exampleInputEmail1" class="form-label letra">Correo Electrónico</label>
-            <input 
+    <div class="mb-3 nombre">
+      <label for="exampleInputPassword1" class="form-label letra">Contraseña</label>
+      <input
+        type="password"
+        class="form-control"
+        formControlName="passwordLogin"
+        placeholder="Contrasena"
+      />
+    </div>
 
-            type="email" 
-            class="form-control" 
-            formControlName="emailLogin"
-            >
-
-        </div>
-
-        <div class="mb-3 nombre">
-            <label for="exampleInputPassword1" class="form-label letra">Contraseña</label>
-            <input 
-
-            type="password" 
-            class="form-control" 
-            formControlName="passwordLogin"
-            >
-
-        </div>
-
-        <button type="submit" class="btn fin" >Ingresar</button>
-    </form>
+    <button type="submit" class="btn fin">Ingresar</button>
+    <!-- <p class="olvido"><a href="#">Olvidaste tu contrasena</a></p> -->
+  </form>
 </main>
