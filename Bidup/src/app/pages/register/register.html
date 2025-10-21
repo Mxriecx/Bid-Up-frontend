@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <main>
     <form class="formulario" [formGroup]="registerForm">
 
@@ -42,3 +43,25 @@
         <button type="submit" class="btn">registrate</button>
     </form>
 </main>
+=======
+<section class="register-section">
+  <form class="Form-login" action="/registro" method="post" novalidate>
+    <h5>Regístrate</h5>
+
+    <!-- Campos obligatorios -->
+    <input class="controls" type="text" name="name" placeholder="Nombre completo" required>
+    <input class="controls" type="number" name="age" placeholder="Edad" required>
+    <input class="controls" type="email" name="email" placeholder="Correo electrónico" required>
+    <input class="controls" type="text" name="username" placeholder="Usuario" required>
+    <input class="controls" type="password" name="password" placeholder="Contraseña" required>
+    
+
+    <!-- Campos opcionales -->
+    <input class="controls" type="text" name="nickname" placeholder="Apodo (opcional)">      
+    
+
+    <input class="buttons" type="submit" value="Crear cuenta">
+    <p><a href="/login">¿Ya tienes cuenta? Inicia sesión</a></p>
+  </form>
+</section>
+>>>>>>> main
