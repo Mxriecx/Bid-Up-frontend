@@ -59,4 +59,10 @@ export class LoginService {
     this._router.navigate(['/login']);
   }
 
+  //2.6 Validar si el usuario ya inició sesión
+  isLoggedIn(){
+    return this.getToken() ? true : false;
+  }//si no hay token, no esta logueado, si sí lo hay, entonces sí inició sesión
+  
+
 }
