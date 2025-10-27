@@ -7,7 +7,7 @@ import { Bids } from '../interfaces/bids';
 @Injectable({
   providedIn: 'root'
 })
-export class Bid {
+export class BidService {
   
   private _httpClient = inject(HttpClient);
 

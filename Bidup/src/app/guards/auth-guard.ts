@@ -4,12 +4,12 @@
 // false -> que NO SE PUEDE MOSTRAR ESE CONTENIDO
 
 import { CanActivateFn } from '@angular/router';
-import { Login } from '../services/login';
+import { LoginService } from '../services/login';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 export const authGuard: CanActivateFn = (route, state) => {
-  const _loginService = inject(Login);
+  const _loginService = inject(LoginService);
   const _router = inject(Router);
 
   // 1. VALIDACIÓN 1: Ya inició sesión?

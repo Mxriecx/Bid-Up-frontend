@@ -1,6 +1,8 @@
 <!-- Encabezado en mi app -->
 <header>
-    <app-navbar></app-navbar>
+    @if(!admin()){
+  <app-navbar></app-navbar>
+  }
 </header>
 
 
@@ -8,7 +10,9 @@
 <router-outlet/> 
 
 
-<!-- Pie de página de mi app -->
- <footer>
-    <app-footer></app-footer>
- </footer>
+@if(!admin()){
+<footer>
+   <app-footer></app-footer>
+
+</footer>
+}

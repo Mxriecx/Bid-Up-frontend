@@ -1,56 +1,73 @@
-
+/* Estructura general del contenedor */
 .row {
   display: flex;
-  flex-direction: row;
-  overflow-x: auto;        /* Scroll horizontal si hay muchas cards */
-  gap: 15px;
-  padding: 15px;
-  margin-left: 10px;
-  margin-right: 10px;
-  justify-content: flex-start;
-  scroll-behavior: smooth;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 
-
+/* Cada tarjeta */
 .card {
-  padding: 0;
-  flex: auto;
-  width: 12rem;            
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
-  background-color: rgb(234, 194, 102);
+  width: 18rem;
+  border: none;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  background-color: #ffffff;
 }
 
+/* Efecto hover */
 .card:hover {
-  transform: scale(1.05);
+  transform: translateY(-6px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
+/* Imagen del producto */
 .card-img-top {
-  height: 150px;        
-  object-fit: auto;
-  border-radius: 8px 8px 0 0;
-  /* border-top-right-radius: 10px; */
-  /* margin-top: 5px; */
+  height: 200px;
+  object-fit: cover;
 }
 
+/* Cuerpo del contenido */
 .card-body {
-  padding: 10px;
+  padding: 1rem;
+  text-align: center;
 }
 
+/* Título */
 .card-title {
-  font-size: 0.95rem;
-  margin-bottom: 5px;
-  font-weight: 900;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 0.5rem;
 }
 
+/* Categoría */
+.card h6 {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 0.75rem;
+}
+
+/* Descripción */
 .card-text {
-  font-size: 0.8rem;
- font-weight: 550;
- color: rgb(38, 38, 38);
+  font-size: 0.9rem;
+  color: #555;
+  min-height: 50px;
+  margin-bottom: 1rem;
 }
 
-.btn {
-  font-size: 0.8rem;
-  padding: 4px 8px;
+/* Botón */
+.btn-primary {
+  background-color: #122F51;
+  border: none;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
 }
