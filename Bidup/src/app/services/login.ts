@@ -19,7 +19,7 @@ export class LoginService {
   private _router = inject(Router);
   private apiURL = environment.appUrl;
 
-  //senal para inicio de sesion (para que vuelva a salir el navbar)
+  
   isLoggedInSignal = signal<boolean>(false);
   isAdminSignal = signal<boolean>(false);
 
@@ -29,7 +29,7 @@ export class LoginService {
   }
 
   getToken() {
-    //viene del localstorage - almacenamiento temporal
+   
 
     return localStorage.getItem("token");
   }
@@ -77,8 +77,5 @@ export class LoginService {
     }
     return this.getToken() ? true : false;
 
-    //si no hay token no esta logueado, sisi lo hay inicio de sesion
-
-    //si no hay token no esta logueado, sisi lo hay inicio de sesion
   }
 }

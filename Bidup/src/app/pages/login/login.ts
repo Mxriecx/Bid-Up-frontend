@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-// Formularios reactivos -> cada cosa que el usuario escriba sea reconocido por el sistema
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Credencials } from '../../interfaces/credencials';
 import { LoginService } from '../../services/login';
@@ -24,7 +23,7 @@ export class Login {
 
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
-      return; // poder agregar estilos 
+      return; 
     }
 
     const credenciales: Credencials = {
@@ -40,7 +39,7 @@ export class Login {
 
 
         if (res) {
-          // guardar el token en el local storage
+     
           localStorage.setItem("token", res.token);
        
           Swal.fire({

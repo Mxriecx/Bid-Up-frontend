@@ -27,13 +27,12 @@ export class Products implements OnInit {
       console.log(this.allProducts)
     }, 
     
-    //respuestas positivas del back
 
     error:(error : any)=>{
       console.error(error);
     } 
     
-    //respuestas negativas del back (errores)
+ 
   })
   }
 

@@ -15,12 +15,11 @@ export class ReviewSite {
     return this._httpClient.post(this.apiUrl + "/reviews/crear", newReview);
   }
 
-  // metodo GET
+
 
   getReview(){
     return this._httpClient.get(this.apiUrl + "/reviews/mostrar");
   }
-  // metodo PUT
 
   putReview(modifyReview : Reviews , id : string){
 
@@ -28,7 +27,6 @@ export class ReviewSite {
     // return this._httpClient.put(`${this.apiUrl}/users/`,userToUpdate,{params:{id , color , age}});
   }
 
-  // metodo Delete
  
   deleteReview ( id : string){
     return this._httpClient.delete(this.apiUrl + "/reviews/borrar/" + id );
