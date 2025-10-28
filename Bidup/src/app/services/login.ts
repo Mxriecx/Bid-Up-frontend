@@ -4,6 +4,7 @@ import { Credencials } from '../interfaces/credencials';
 import { environment } from '../../environments/environment';
 import { jwtDecode } from 'jwt-decode'; // para decodificar el token y poder saber si inicio sesion un admin o no 
 import { Router } from '@angular/router'; //redireccionar a otras paginas al iniciar sesion
+import { signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,10 @@ export class Login {
   private _httpClient =inject(HttpClient);
   private _router =inject(Router);
   private apiURL = environment.appUrl;
+// señal para el estado de inicio de sesión
+  isLoggedInSignal = signal<boolean>(false);
+  isAdminSignal = signal<boolean>(false);
+
 
 login(credencialesIngreso :Credencials){
   return this._httpClient.post(this.apiURL+ "/login",credencialesIngreso)
