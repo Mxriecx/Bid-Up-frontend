@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../interfaces/product';
 import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,9 @@ export class Productservice {
     return this._httpClient.delete(this.apiUrl + '/products/eliminar/' + id)
   }
 
+updateProduct(id: string, data: any) {
+  return this._httpClient.put(`${this.apiUrl}/products/actualizar/${id}`, data);
+}
 
 
 

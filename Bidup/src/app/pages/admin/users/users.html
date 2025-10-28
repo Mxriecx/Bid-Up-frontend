@@ -1,16 +1,60 @@
-<h1>Bid Users</h1>
+<h1 class="text-primary mb-4 text-center">Usuarios registrados</h1>
 
-<div class="container d-flex flex-wrap gap-5 p-4">
-    @for (user of allUsers; track $index) {
-    <div>
-        <h2 class="fa-bold">{{user.name}}</h2>
-        <p>{{user.username}}</p>
-        <p>{{user.email}}</p>
+<div class="container d-flex flex-wrap gap-5 justify-content-center">
+  @for (user of allUsers; track $index) {
+    <div class="card shadow-sm p-3" style="width: 18rem;">
+      <h5 class="fw-bold">{{ user.name }}</h5>
+      <p><strong>Usuario:</strong> {{ user.username }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
 
-        <div class="d-flex gap-4">
-            <button class="btn btn-info" (click)="modifyUser(user._id)">Actualizar</button>
-            <button class="btn btn-danger" (click)="deleteUser(user._id)">Eliminar</button>
-        </div>
+      <div class="d-flex justify-content-center gap-2 mt-2">
+        <button class="btn btn-info btn-sm text-white" (click)="modifyUser(user._id)">Actualizar</button>
+        <button class="btn btn-danger btn-sm" (click)="deleteUser(user._id)">Eliminar</button>
+      </div>
     </div>
-    }
+  }
+</div>
+
+<!-- 🔹 Modal Bootstrap -->
+<div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="editUserModalLabel">Actualizar Usuario</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+
+      <div class="modal-body" *ngIf="selectedUser">
+        <form (ngSubmit)="updateUser()">
+          <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" [(ngModel)]="selectedUser.name" name="name" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Usuario</label>
+            <input type="text" class="form-control" [(ngModel)]="selectedUser.username" name="username" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Correo electrónico</label>
+            <input type="email" class="form-control" [(ngModel)]="selectedUser.email" name="email" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Rol</label>
+            <select class="form-select" [(ngModel)]="selectedUser.role" name="role">
+              <option value="user">Usuario</option>
+              <option value="admin">Administrador</option>
+            </select>
+          </div>
+
+          <div class="text-end mt-3">
+            <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

@@ -2,15 +2,25 @@
 
 <section class="row justify-content-center">
   @for (item of allProducts; track $index) {
-    <div class="card m-3 p-0" style="width: 18rem;">
-      <img [src]="baseUrl + item.image" class="card-img-top" alt="{{item.title}}">
-      <div class="card-body text-center">
-        <h5 class="card-title fw-bold">{{ item.title }}</h5>
-        <h6 class="text-muted">{{ item.category }}</h6>
-        <p class="card-text">{{ item.description }}</p>
-        <p class="fw-semibold">Precio base: COP {{ item.initialPrice }}</p>
-        <button class="btn btn-primary" (click)="pujar(item._id)">💰 Pujar</button>
+  <div class="card m-3 p-0" style="width: 18rem;">
+    <img [src]="baseUrl + item.image" class="card-img-top" alt="{{item.title}}">
+    <div class="card-body text-center">
+      <h5 class="card-title fw-bold">{{ item.title }}</h5>
+      <h6 class="text-muted">{{ item.category }}</h6>
+      <p class="card-text">{{ item.description }}</p>
+      <p class="fw-semibold">Precio base: COP {{ item.initialPrice }}</p>
+      <button class="btn btn-primary" (click)="pujar(item._id)">💰 Pujar</button>
+      @if (ultimoValorPujado[item._id]) {
+      <div class="mt-2">
+        <strong>Tu última puja:</strong>
+        COP {{ ultimoValorPujado[item._id] | number }}
       </div>
+      }
+
+
+
+
     </div>
+  </div>
   }
 </section>

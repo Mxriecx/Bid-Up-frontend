@@ -8,6 +8,7 @@ import { Login } from './pages/login/login';
 import { Reviews } from './pages/reviews/reviews';
 import { Users } from './pages/admin/users/users';
 import { authGuard } from './guards/auth-guard';
+import { Inventory } from './pages/admin/inventory/inventory';
 
 export const routes: Routes = [    
     {path:'',component: Home, title :'Inicio'},
@@ -19,6 +20,7 @@ export const routes: Routes = [
           canActivateChild: [authGuard], 
           children: [
             { path: '', component: Users },
+            { path :'inventory',component : Inventory}
           ]
         },
     {path:'products',component: Products, title :'Productos y Subastas'},

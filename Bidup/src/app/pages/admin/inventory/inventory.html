@@ -1,0 +1,80 @@
+
+<h1 class="text-black mb-4 text-center">Productos activos</h1>
+
+<div class="container d-flex flex-wrap gap-4 justify-content-center">
+  @for (product of allProducts; track $index) {
+    <div class="card p-3 shadow-sm" style="width: 18rem;">
+      <h5 class="fw-bold text-center">{{ product.title }}</h5>
+      <img [src]="baseUrl + product.image" alt="imagen" class="img-fluid rounded mb-2" />
+      <p class="small">{{ product.description }}</p>
+      <p><strong>Estado:</strong> {{ product.state }}</p>
+
+      <div class="d-flex gap-2 justify-content-center mt-2">
+        <button class="btn btn-info btn-sm text-white" (click)="modifyProduct(product._id)">Actualizar</button>
+        <button class="btn btn-danger btn-sm" (click)="deleteProduct(product._id)">Eliminar</button>
+      </div>
+    </div>
+  }
+</div>
+
+<!-- 🔹 Modal Bootstrap -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="editModalLabel">Actualizar Producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+
+      <div class="modal-body" *ngIf="selectedProduct">
+        <form (ngSubmit)="updateProduct()" class="row g-3">
+          <div class="col-md-4 text-center">
+            <img [src]="baseUrl + selectedProduct.image" class="img-fluid rounded mb-2" alt="preview" />
+          </div>
+
+          <div class="col-md-8">
+            <div class="mb-2">
+              <label class="form-label">Título</label>
+              <input type="text" class="form-control" [(ngModel)]="selectedProduct.title" name="title" required>
+            </div>
+
+            <div class="mb-2">
+              <label class="form-label">Descripción</label>
+              <textarea class="form-control" rows="3" [(ngModel)]="selectedProduct.description" name="description"></textarea>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-2">
+                <label class="form-label">Precio inicial</label>
+                <input type="number" class="form-control" [(ngModel)]="selectedProduct.initialPrice" name="initialPrice">
+              </div>
+              <div class="col-md-6 mb-2">
+                <label class="form-label">Categoría</label>
+                <select class="form-select" [(ngModel)]="selectedProduct.category" name="category">
+                  <option value="Tecnologia">Tecnología</option>
+                  <option value="Arte">Arte</option>
+                  <option value="Hogar">Hogar</option>
+                  <option value="Electrodomesticos">Electrodomésticos</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mb-2">
+              <label class="form-label">Estado</label>
+              <select class="form-select" [(ngModel)]="selectedProduct.state" name="state">
+                <option value="Por Subastar">Por Subastar</option>
+                <option value="en subasta">En subasta</option>
+                <option value="vendido">Vendido</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="text-end mt-3">
+            <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
