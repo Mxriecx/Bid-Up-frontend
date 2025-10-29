@@ -5,6 +5,7 @@ import { environment } from '../../../environments/environment';
 import Swal from 'sweetalert2';
 import { BidService } from '../../services/bids';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -16,6 +17,7 @@ import { CommonModule } from '@angular/common';
 export class Products implements OnInit {
   _productService = inject(Productservice);
   _bidService = inject(BidService);
+  _router = inject(Router);
 
   allProducts: Product[] = [];
   baseUrl: string = environment.appUrl;
@@ -34,7 +36,6 @@ export class Products implements OnInit {
     this._productService.getProducts().subscribe({
       next: (response: any) => {
         this.allProducts = response.data;
-        console.log(this.allProducts);
       },
       error: (error: any) => {
         console.error(error);
@@ -43,6 +44,26 @@ export class Products implements OnInit {
   }
 
   pujar(productId: string) {
+
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Debes iniciar sesión 🔐',
+        text: 'Para pujar necesitas tener una cuenta activa.',
+        confirmButtonText: 'Ir al login',
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar'
+      }).then(result => {
+        if (result.isConfirmed) {
+          this._router.navigate(['/login']);
+        }
+      });
+      return;
+    }
+
+
     const producto = this.allProducts.find(p => p._id === productId);
     if (!producto) return;
 
@@ -69,24 +90,40 @@ export class Products implements OnInit {
       if (result.isConfirmed) {
         const valor = Number(result.value);
 
-        // ✅ Guarda la última puja
+
         this.ultimoValorPujado[productId] = valor;
         localStorage.setItem('ultimoValorPujado', JSON.stringify(this.ultimoValorPujado));
 
-        // ✅ Actualiza el precio del producto
+
         producto.initialPrice = valor;
 
-        // ✅ Mensaje visual
-        Swal.fire({
-          icon: 'success',
-          title: 'Puja enviada ✅',
-          text: `Has pujado COP ${valor.toLocaleString('es-CO')}`,
-          timer: 2000,
-          showConfirmButton: false
+        this._bidService.postBid({
+          productId: productId,
+          amount: valor
+        } as any).subscribe({
+          next: (res) => {
+            console.log('✅ Puja registrada correctamente:', res);
+
+            Swal.fire({
+              icon: 'success',
+              title: 'Puja enviada ✅',
+              text: `Has pujado COP ${valor.toLocaleString('es-CO')}`,
+              timer: 2000,
+              showConfirmButton: false
+            });
+          },
+          error: (err) => {
+            console.error('❌ Error al enviar la puja:', err);
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'Hubo un problema al registrar tu puja.'
+            });
+          }
         });
 
-   
+
       }
-    });
+    })
   }
 }
