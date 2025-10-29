@@ -1,7 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Navbar } from './components/navbar/navbar';
 import { Footer } from "./components/footer/footer";
+import { LoginService } from './services/login';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, Navbar, Footer],
@@ -9,5 +10,6 @@ import { Footer } from "./components/footer/footer";
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('Bidup');
+  private _loginService = inject(LoginService);
+  isInvisible = computed(() => this._loginService.isAdminSignal());
 }

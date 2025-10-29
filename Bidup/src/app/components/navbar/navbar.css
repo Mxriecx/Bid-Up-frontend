@@ -1,0 +1,50 @@
+/* Evita que la página detrás se mueva cuando el modal está abierto */
+body.no-scroll { overflow: hidden; }
+
+/* Cubre toda la pantalla detrás del modal */
+.modal-host {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.45);         /* oscurece el fondo */
+  backdrop-filter: blur(2px);               /* opcional */
+  z-index: 2000;                            /* por encima de tu navbar */
+}
+
+/* Tarjeta del modal */
+.modal-card {
+  width: min(92vw, 560px);
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+}
+
+/* Header del modal */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #eef1f4;
+  padding-bottom: 10px;
+}
+
+.icon-close {
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* Cuerpo y acciones */
+.modal-body { display: grid; gap: 10px; }
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 14px;
+}
