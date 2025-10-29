@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { UserService } from '../../../services/users';
 import { User } from '../../../interfaces/user';
 import Swal from 'sweetalert2';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-users',
@@ -14,7 +15,7 @@ import Swal from 'sweetalert2';
 })
 export class Users {
   private _userService = inject(UserService);
-
+   baseUrl: string = environment.appUrl;
   allUsers: User[] = [];
   selectedUser: User | null = null;
 
@@ -25,6 +26,7 @@ export class Users {
   showUsers() {
     this._userService.getUser().subscribe({
       next: (res: any) => {
+        console.log("🧑 Usuarios recibidos:", res.data);
         this.allUsers = res.data;
       },
       error: (err: any) => console.error(err.error.mensaje)

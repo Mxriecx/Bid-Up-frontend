@@ -43,7 +43,7 @@ export class Login {
           localStorage.setItem("token", res.token);
        
           Swal.fire({
-            title: "Drag me!",
+            title: "Bienvenido a tu cuenta!",
             icon: "success",
             draggable: true
           });
@@ -53,7 +53,7 @@ export class Login {
       },
       error: (err: any) => {
         Swal.fire({
-            title: "Stop!",
+            title: "Ha ocurrido un error, correo o contrasena incorrectos",
             text: err.error.mensaje,
             icon: "error",
             draggable: true
