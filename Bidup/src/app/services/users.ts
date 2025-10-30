@@ -31,4 +31,7 @@ export class UserService {
     return this._httpClient.delete(this.apiUrl + "/users/borrar/" + id);
   }
 
+  updateUser(id: string, data: any) {
+    return this._httpClient.put(`${this.apiUrl}/users/${id}`, data);
+  }
 }

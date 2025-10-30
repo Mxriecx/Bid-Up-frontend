@@ -1,0 +1,21 @@
+.card img {
+  height: 160px;
+  object-fit: cover;
+}
+
+.modal-content {
+  border-radius: 10px;
+}
+
+.btn-info {
+  background-color: #122F51;
+  border: none;
+}
+
+.btn-info:hover {
+  background-color: #0069d9;
+}
+
+h1{
+   color:  #122F51;
+}
