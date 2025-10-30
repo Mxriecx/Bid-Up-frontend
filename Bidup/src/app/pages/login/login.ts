@@ -23,7 +23,7 @@ export class Login {
 
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
-      return; 
+      return;
     }
 
     const credenciales: Credencials = {
@@ -33,15 +33,16 @@ export class Login {
     }
 
     console.log("credenciales de Ingreso", credenciales);
+    
     this._loginservice.login(credenciales).subscribe({
       next: (res: any) => {
         console.log(res);
 
 
         if (res) {
-     
+
           localStorage.setItem("token", res.token);
-       
+
           Swal.fire({
             title: "Bienvenido a tu cuenta!",
             icon: "success",
@@ -53,11 +54,11 @@ export class Login {
       },
       error: (err: any) => {
         Swal.fire({
-            title: "Ha ocurrido un error, correo o contrasena incorrectos",
-            text: err.error.mensaje,
-            icon: "error",
-            draggable: true
-          });
+          title: "Ha ocurrido un error, correo o contrasena incorrectos",
+          text: err.error.mensaje,
+          icon: "error",
+          draggable: true
+        });
       },
     })
 
