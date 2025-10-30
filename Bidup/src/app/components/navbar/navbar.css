@@ -9,7 +9,7 @@ body.no-scroll { overflow: hidden; }
   place-items: center;
   background: rgba(0, 0, 0, 0.45);         /* oscurece el fondo */
   backdrop-filter: blur(2px);               /* opcional */
-  z-index: 2000;                            /* por encima de tu navbar */
+  z-index: 900;                             /* suficiente para el modal sin tapar SweetAlert2 */
 }
 
 /* Tarjeta del modal */

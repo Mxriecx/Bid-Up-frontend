@@ -64,41 +64,33 @@
 </nav>
 
 @if (showpopup) {
-  <div
-    class="modal-host"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="createProductTitle"
-    (click)="popup()">
+  <div class="modal-host" role="dialog" aria-modal="true" aria-labelledby="createProductTitle" (click)="popup()">
     <div class="modal-card" (click)="$event.stopPropagation()">
       <header class="modal-header">
         <h2 id="createProductTitle" class="h5 m-0">Crear nuevo producto</h2>
-        <button
-          type="button"
-          class="icon-close"
-          aria-label="Cerrar"
-          (click)="popup()">
+        <button type="button" class="icon-close" aria-label="Cerrar" (click)="popup()">
           <i class="bi bi-x-lg"></i>
         </button>
       </header>
 
-      <form class="modal-body" (submit)="submitProduct($event)">
+      <!-- Conectado a Reactive Forms -->
+      <form class="modal-body" [formGroup]="productForm" (ngSubmit)="submitProduct($event)">
         <label class="form-label fw-semibold" for="productName">Nombre del producto</label>
         <input
           id="productName"
-          name="name"
           type="text"
           class="form-control"
           placeholder="Ej. Camara fotografica"
+          formControlName="title"
           required>
 
         <label class="form-label fw-semibold" for="productDescription">Descripcion</label>
         <textarea
           id="productDescription"
-          name="description"
           class="form-control"
           rows="3"
           placeholder="Describe tu producto y su estado"
+          formControlName="description"
           required></textarea>
 
         <div class="row g-3">
@@ -106,44 +98,53 @@
             <label class="form-label fw-semibold" for="productPrice">Precio inicial</label>
             <input
               id="productPrice"
-              name="price"
               type="number"
               min="0"
               step="0.01"
               class="form-control"
               placeholder="0.00"
+              formControlName="initialPrice"
               required>
           </div>
+
           <div class="col-12 col-md-6">
             <label class="form-label fw-semibold" for="productCategory">Categoria</label>
             <select
               id="productCategory"
-              name="category"
               class="form-select"
+              formControlName="categories"
               required>
               <option value="" disabled selected>Selecciona una categoria</option>
-              <option value="tecnologia">Tecnologia</option>
-              <option value="hogar">Hogar</option>
-              <option value="moda">Moda</option>
-              <option value="coleccionables">Coleccionables</option>
-              <option value="otros">Otros</option>
+              <option value="Tecnologia">Tecnologia</option>
+              <option value="moda">arte</option>
+              <option value="Hogar">Hogar</option>
+              <option value="Electrodomesticos">Electrodomesticos</option>
             </select>
           </div>
         </div>
 
-        <label class="form-label fw-semibold" for="productImage">Imagen del producto</label>
+        <label class="form-label fw-semibold" for="productImage">Imagen (archivo opcional)</label>
         <input
           id="productImage"
-          name="image"
+          accept="image/*"
           type="file"
           class="form-control"
-          placeholder="https://ejemplo.com/imagen.jpg">
+          (change)="onFileSelected($event)">        
+
+        <!-- opcional: vendedor y estado -->
+        <!--
+        <label class="form-label fw-semibold mt-2" for="seller">Vendedor</label>
+        <input id="seller" type="text" class="form-control" formControlName="seller" placeholder="ID del vendedor">
+        <label class="form-label fw-semibold mt-2" for="state">Estado</label>
+        <input id="state" type="text" class="form-control" formControlName="state" placeholder="nuevo, usado...">
+        -->
 
         <div class="modal-actions">
           <button type="button" class="btn btn-light" (click)="popup()">Cancelar</button>
-          <button type="submit" class="btn btn-warning fw-semibold">Crear producto</button>
+          <button type="submit" class="btn crear btn-warning fw-semibold">Crear producto</button>
         </div>
       </form>
     </div>
   </div>
 }
+
