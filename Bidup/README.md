@@ -1,44 +1,65 @@
 BidUp
 =====
+
 **Autores:**  
 - Maria Camila Paz Tuiran  
 - Isabella Niño Becerra  
 - Fabian Eduardo Noguera Quintero  
 
-BidUp recrea una casa de subastas en formato digital. La propuesta es sencilla: cualquier persona puede publicar un artículo y la comunidad entera puede pujar por él hasta que se cierre la subasta. Todo el proyecto gira alrededor de ofrecer una experiencia ágil, amigable y entendible para quienes compran, venden o moderan.
+BidUp es una plataforma de subastas en línea donde cualquier persona puede publicar artículos y permitir que la comunidad puje por ellos en tiempo real. Además del flujo público, la aplicación incluye herramientas administrativas para supervisar usuarios y operaciones.
 
-## ¿Qué ofrece la plataforma?
+## Funcionalidades destacadas
 
-- Publicar artículos con información básica y una imagen representativa.
-- Explorar productos disponibles y revisar cómo avanzan las pujas.
-- Iniciar sesión para participar activamente (subir productos, ofertar, gestionar perfil).
-- Administrar la plataforma desde un panel especial para moderadores.
+- *Publicar productos:* formulario sencillo para subir título, descripción, categoría, precio inicial e imagen del artículo.
+- *Pujar y seguir subastas:* los usuarios autenticados pueden ofertar por productos y ver cómo evoluciona el precio.
+- *Autenticación y perfiles:* registro e inicio de sesión para gestionar productos, pujas y preferencias personales.
+- *Dashboard administrativo:* moderación de usuarios y control de contenido creado por la comunidad.
+- *Alertas amigables:* integración con SweetAlert2 para confirmaciones y mensajes de error claros.
 
-## Cómo se vive la experiencia
+## Arquitectura
 
-1. **Descubrir:** al entrar, el usuario navega por los productos destacados y conoce las reglas básicas.
-2. **Participar:** tras autenticarse puede crear artículos propios o sumarse a una subasta ya abierta.
-3. **Supervisar:** el rol de administrador vigila que las publicaciones cumplan las políticas y resuelve incidencias.
+- *Frontend:* Angular 17+, TypeScript, Bootstrap y estilos modulares por componente.
+- *Backend:* API REST con Node.js y Express, persistencia principal en MongoDB.
+- *Comunicación:* HttpClient gestiona las peticiones al backend y maneja respuestas tipadas.
+- *Seguridad:* autenticación planificada/implementada mediante JSON Web Tokens.
 
-## Base tecnológica
+## Requisitos previos
 
-El proyecto combina un frontend moderno en Angular con un backend en Node.js/Express y una base de datos MongoDB. Se utilizan librerías como Bootstrap para el diseño y SweetAlert2 para los mensajes interactivos. La comunicación entre módulos se realiza mediante una API REST.
+- Node.js 20 o superior  
+- npm 10 o superior  
+- Instancia de MongoDB (local o en la nube)  
+- Backend de BidUp operativo (por defecto en http://localhost:3001)
 
-## Puesta en marcha rápida
+## Puesta en marcha (frontend)
 
-1. Instala dependencias dentro de la carpeta `Bidup` (`npm install`).
-2. Ajusta las variables de entorno con la URL del backend.
-3. Ejecuta `npm run start` para levantar el frontend.
-4. Arranca el backend (vive en un repositorio/carpeta aparte) y asegúrate de que MongoDB esté disponible.
-5. Navega a `http://localhost:4200` para empezar a probar.
+1. Sitúate en el directorio Bid-Up-frontend/Bidup.
+2. Instala dependencias:
+   bash
+   npm install
+   
+3. Configura la URL del backend en src/environments/environment*.ts.
+4. Levanta el servidor de desarrollo:
+   bash
+   npm run start
+   
+5. Abre http://localhost:4200 en el navegador.
 
-## Ideas para extender el proyecto
+> ℹ Levanta el backend en paralelo para que las peticiones de productos y autenticación funcionen correctamente.
 
-- Actualizaciones en tiempo real con sockets para ver pujas al instante.
-- Historial detallado de ofertas y reputación de usuarios.
-- Filtros más inteligentes para encontrar productos por categoría o estado.
-- Reportes y estadísticas que ayuden a entender el movimiento diario.
+## Estructura relevante
 
-## Nota final
+- src/app/components/navbar: barra superior con el modal para crear productos.
+- src/app/components/bid-product: formulario especializado para publicar artículos desde la sección de pujas.
+- src/app/services: servicios de Angular que encapsulan llamadas HTTP (products, login, etc.).
+- src/app/pages: páginas completas (login, listado de productos, administrador, etc.).
 
-BidUp nació como ejercicio dentro de un bootcamp. Es un buen punto de partida para practicar cómo se unen diseño, frontend, backend y base de datos en una sola solución. Modifícalo, experiméntalo y llévalo al siguiente nivel.
+## Próximos pasos sugeridos
+
+- Validaciones adicionales y previsualización de imágenes antes de publicar.
+- WebSockets o SSE para actualizaciones de pujas en tiempo real.
+- Historial de ofertas y reputación de vendedores/compradores.
+- Automatización de pruebas e2e con Cypress o Playwright.
+
+## Créditos
+
+Proyecto desarrollado como parte del Bootcamp, pensado para practicar arquitecturas completas con Angular y Node.js. Siéntete libre de adaptarlo a tus propias necesidades.
