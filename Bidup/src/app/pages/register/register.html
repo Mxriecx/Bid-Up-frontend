@@ -1,80 +1,90 @@
 <main>
-    <form class="formulario" [formGroup]="registerForm" (ngSubmit)="handleSubmit()">
+  <form class="formulario" [formGroup]="registerForm" (ngSubmit)="handleSubmit()">
 
+    <h1>Crear cuenta</h1>
 
-        <h1>Crear cuenta</h1>
+    <!-- Nombre -->
+    <div class="mb-3 nombre">
+      <label for="nombre" class="form-label">Nombre completo</label>
+      <input 
+        type="text"
+        id="nombre"
+        class="form-control"
+        formControlName="name"
+        placeholder="Ingresa tu nombre completo"
+        required
+      />
+    </div>
 
-        <div class="mb-3 nombre">
-            <label for="nombre" class="form-label">Nombre completo</label>
-            <input 
-            type="text" 
-            class="form-control" 
-            id="nombre" 
-            formControlName="name"
-            placeholder="Ingresa tu nombre completo"
-            reuired
-            />
-        </div>
+    <!-- Username -->
+    <div class="mb-3 nombre">
+      <label for="username" class="form-label">Nombre de usuario</label>
+      <input 
+        type="text"
+        id="username"
+        class="form-control"
+        formControlName="username"
+        placeholder="Ingresa tu nombre de usuario"
+        required
+      />
+    </div>
 
-        <div class="mb-3 nombre">
-            <label for="username" class="form-label">Username</label>
-            <input 
-            type="text" 
-            class="form-control" 
-            id="username" 
-            formControlName="username"
-            placeholder="Ingrsa tu nombre de usuario"
-            required
-            />
-        </div>
+    <!-- Correo -->
+    <div class="mb-3 nombre">
+      <label for="correo" class="form-label">Correo electrónico</label>
+      <input 
+        type="email"
+        id="correo"
+        class="form-control"
+        formControlName="email"
+        placeholder="Ingresa tu correo"
+        required
+      />
+    </div>
 
-        <div class="mb-3 nombre">
-            <label for="correo" class="form-label">Correo</label>
-            <input 
-            type="email" 
-            class="form-control" 
-            id="correo" 
-            formControlName="email"
-            autocomplete="email"
-            placeholder="Ingresa tu correo"
-            required
-            />
-        </div>
+    <!-- Edad -->
+    <div class="mb-3 nombre">
+      <label for="edad" class="form-label">Edad</label>
+      <input 
+        type="number"
+        id="edad"
+        class="form-control"
+        formControlName="age"
+        placeholder="Ingresa tu edad"
+      />
+    </div>
 
+    <!-- Contraseña -->
+    <div class="mb-3 nombre">
+      <label for="contrasena" class="form-label">Contraseña</label>
+      <input 
+        type="password"
+        id="contrasena"
+        class="form-control"
+        formControlName="password"
+        placeholder="Crea una contraseña (mínimo 8 caracteres)"
+        required
+      />
+    </div>
 
-        <div class="mb-3 nombre">
-            <label for="edad" class="form-label">edad</label>
-            <input 
-            type="number" 
-            class="form-control" 
-            id="edad" 
-            formControlName="age"
-            placeholder="Ingresa tu edad"
-            required
-            />
-        </div>
+    <!-- Imagen -->
+    <div class="mb-3 nombre">
+      <label for="imagen" class="form-label">Foto de perfil</label>
+      <input 
+        type="file"
+        id="imagen"
+        class="form-control"
+        (change)="onFileSelected($event)"
+        accept="image/*"
+      />
+    </div>
 
-        <div class="mb-3 nombre">
-            <label for="contrasena" class="form-label">Contraseña</label>
-            <input 
-            type="password" 
-            class="form-control" 
-            id="contrasena" 
-            formControlName="password"
-            autocomplete="new-password"
-            placeholder="Ingresa tu contraseña"
-            />
-        </div>
+    <!-- Vista previa de imagen -->
+    <div class="preview-container" *ngIf="previewUrl">
+      <img [src]="previewUrl" alt="Vista previa de imagen" class="preview-img" />
+    </div>
 
-        <div class="mb-3 nombre">
-            <label for="imagen" class="form-label">Foto de perfil</label>
-            <input 
-            type="file" 
-            class="form-control" 
-            id="imagen" 
-            formControlName="image">
-        </div>
-
-        <button type="submit" class="btn fin">registrate</button>
-    </form>
+    <button type="submit" class="btn fin">Registrarse</button>
+  </form>
 </main>
+

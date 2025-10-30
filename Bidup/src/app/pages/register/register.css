@@ -47,3 +47,18 @@ h1 {
   padding: 10px;
   font-size: 20px;
 }
+
+.preview-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.preview-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #0e3b68;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
