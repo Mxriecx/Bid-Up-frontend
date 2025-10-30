@@ -1,47 +1,38 @@
-🧩 BidUp
+BidUp
+=====
 
-BidUp es una aplicación web moderna de subastas en línea que permite a los usuarios ofertar por productos de diferentes categorías, gestionar sus perfiles y participar en una comunidad activa de compradores y vendedores.
-El proyecto combina un frontend dinámico en Angular con un backend robusto desarrollado en Node.js, Express y MongoDB.
+**Autores:**  
+- Maria Camila Paz Tuiran  
+- Isabella Niño Becerra  
+- Fabian Eduardo Noguera Quintero  
 
-🚀 Características principales
+BidUp es una plataforma de subastas en línea donde cualquier persona puede publicar artículos y permitir que la comunidad puje por ellos en tiempo real. Además del flujo público, la aplicación incluye herramientas administrativas para supervisar usuarios y operaciones.
 
-🛍️ Exploración de productos: visualiza artículos disponibles clasificados por categorías (tecnología, arte, hogar, electrodomésticos, etc.).
+## Funcionalidades destacadas
 
-💸 Sistema de pujas (bids): los usuarios pueden realizar ofertas en tiempo real.
+- **Publicar productos:** formulario sencillo para subir título, descripción, categoría, precio inicial e imagen del artículo.
+- **Pujar y seguir subastas:** los usuarios autenticados pueden ofertar por productos y ver cómo evoluciona el precio.
+- **Autenticación y perfiles:** registro e inicio de sesión para gestionar productos, pujas y preferencias personales.
+- **Dashboard administrativo:** moderación de usuarios y control de contenido creado por la comunidad.
+- **Alertas amigables:** integración con SweetAlert2 para confirmaciones y mensajes de error claros.
 
-👥 Gestión de usuarios: registro, inicio de sesión y perfiles personalizados.
+## Arquitectura
 
-⭐ Valoraciones y reseñas: los usuarios pueden dejar comentarios y puntuaciones sobre los productos.
+- **Frontend:** Angular 17+, TypeScript, Bootstrap y estilos modulares por componente.
+- **Backend:** API REST con Node.js y Express, persistencia principal en MongoDB.
+- **Comunicación:** `HttpClient` gestiona las peticiones al backend y maneja respuestas tipadas.
+- **Seguridad:** autenticación planificada/implementada mediante JSON Web Tokens.
 
-🖼️ Soporte multimedia: subida y visualización de imágenes para cada producto.
+## Requisitos previos
 
-🔒 Seguridad: contraseñas cifradas y validación de autenticación JWT (si lo tienes o planeas agregarlo).
+- Node.js 20 o superior  
+- npm 10 o superior  
+- Instancia de MongoDB (local o en la nube)  
+- Backend de BidUp operativo (por defecto en `http://localhost:3001`)
 
-🧱 Tecnologías utilizadas
-Frontend
+## Puesta en marcha (frontend)
 
-Angular 17+
-
-TypeScript
-
-HTML5, SCSS
-
-Angular Material o Bootstrap (según lo que uses)
-
-Comunicación con API REST mediante HttpClient
-
-Backend
-
-Node.js
-
-Express.js
-
-MongoDB con Mongoose
-
-bcryptjs (encriptación de contraseñas)
-
-CORS habilitado para comunicación con frontend
-
-
-Mockup:
-
+1. Sitúate en el directorio `Bid-Up-frontend/Bidup`.
+2. Instala dependencias:
+   ```bash
+   npm install
