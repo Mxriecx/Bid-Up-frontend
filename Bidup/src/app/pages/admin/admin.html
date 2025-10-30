@@ -1,1 +1,33 @@
-<p>admin works!</p>
+<section class="d-flex vh-100">
+
+    <div class="contenedor-nav p-4">
+
+        <h3>Panel de Administracion</h3>
+        <nav class="mt-4">
+            <ul class="nav flex-column gap-2">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/admin" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{exact:true}">Usuarios Bid</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/admin/inventory" routerLinkActive="active">Productos Activos</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link cierre" (click)="logout()" routerLinkActive="active">Logout ➡️ </a>
+                </li>
+
+            </ul>
+        </nav>
+
+    </div>
+
+
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+
+
+</section>
+<!--Mostar el contenido de rutas hijas-->

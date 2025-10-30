@@ -4,21 +4,21 @@ import { Credencials } from '../interfaces/credencials';
 import { environment } from '../../environments/environment';
 import { jwtDecode } from 'jwt-decode'; // para decodificar el token y poder saber si inicio sesion un admin o no 
 import { Router } from '@angular/router'; //redireccionar a otras paginas al iniciar sesion
-import { signal } from '@angular/core';
+import { signal } from '@angular/core'; //redireccionar a otras paginas al iniciar sesion
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class Login {
-  
-     
+
+export class LoginService {
+    
   private _httpClient =inject(HttpClient);
   private _router =inject(Router);
   private apiURL = environment.appUrl;
-// señal para el estado de inicio de sesión
+
   isLoggedInSignal = signal<boolean>(false);
   isAdminSignal = signal<boolean>(false);
-
 
 login(credencialesIngreso :Credencials){
   return this._httpClient.post(this.apiURL+ "/login",credencialesIngreso)
@@ -48,23 +48,30 @@ redirecTo(){
   if(this.isAdmin()){
     this._router.navigate(["/admin"]);
 
-  }else{
-    this._router.navigate(["/"])
+    } else {
+      this._router.navigate(["/"])
 
-  }
-  }
-
-  // 2.5 el cierre de sesión
-  logout(){
-    localStorage.removeItem('token');
-    alert('Cierre de sesión exitoso, Vuelve pronto!');
-    this._router.navigate(['/login']);
+    }
   }
 
-  //2.6 Validar si el usuario ya inició sesión
-  isLoggedIn(){
+  salirLogout() {
+    localStorage.removeItem("token");
+    this.isLoggedInSignal.set(false);
+    this.isAdminSignal.set(false);
+    alert("cierre de sesion exitoso");
+    this._router.navigate(["/login"]);
+  }
+
+  isLoggedIn() {
+    //this.isLoggedInSignal.set(this.getToken()? true : false)
+    if (this.getToken()) {
+
+      this.isLoggedInSignal.set(true);
+
+    } else {
+      this.isLoggedInSignal.set(false);
+    }
     return this.getToken() ? true : false;
-  }//si no hay token, no esta logueado, si sí lo hay, entonces sí inició sesión
-  
 
+  }
 }

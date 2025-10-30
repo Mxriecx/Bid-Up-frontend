@@ -5,7 +5,7 @@ import { Card } from '../../components/card/card';
 
 @Component({
   selector: 'app-home',
-  imports: [Carrusel, Card],
+  imports: [Carrusel,Card],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })

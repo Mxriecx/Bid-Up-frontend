@@ -1,6 +1,6 @@
 
 export interface User {
-    _id : string,
+    _id :string,
     image?: string,
     name : string,
     age : number,

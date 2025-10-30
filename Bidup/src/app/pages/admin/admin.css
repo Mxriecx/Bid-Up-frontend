@@ -1,0 +1,18 @@
+.contenedor-nav{
+    height: 100vh;
+    width: 300px;
+    background-color:  #122F51;
+    color: white;
+  
+}
+
+.nav-link.active{
+    background-color: wheat;
+    color:  #122F51;
+
+    border-radius: 20px;
+}
+
+.cierre{
+    cursor: pointer;
+}

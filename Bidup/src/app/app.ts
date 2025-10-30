@@ -1,8 +1,10 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, inject ,computed } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Navbar } from './components/navbar/navbar';
 import { Footer } from "./components/footer/footer";
-import { Login } from './services/login';
+import { LoginService } from './services/login';
+
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, Navbar, Footer],
@@ -10,10 +12,8 @@ import { Login } from './services/login';
   styleUrl: './app.css'
 })
 export class App {
-  private _login = inject(Login);
-  isInvisible = computed(()=>this._login.isAdminSignal());
-  // Si es administrador isInvisible = true
-  // Si no es administrador isInvisible = false
+ private _loginService =inject(LoginService);
 
-  protected readonly title = signal('Bidup');
+ admin = computed(()=> this._loginService.isAdminSignal());
+
 }

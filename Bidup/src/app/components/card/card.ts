@@ -1,7 +1,8 @@
-import { Component,inject,OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Productservice } from '../../services/products';
 import { Product } from '../../interfaces/product';
 import { environment } from '../../../environments/environment';
+
 @Component({
   selector: 'app-card',
   imports: [],
@@ -11,25 +12,30 @@ import { environment } from '../../../environments/environment';
 export class Card implements OnInit {
 
   _productService = inject(Productservice);
-
-  allProducts : Product[]=[];
+  allProducts: Product[] = [];
   baseUrl: string = environment.appUrl;
-  showProducts(){
-    
-  this._productService.getProducts().subscribe({
-    next:(response : any)=>{
-      this.allProducts =response.data;
-      console.log(this.allProducts)
-    }, 
-    
-    //respuestas positivas del back
 
-    error:(error : any)=>{
-      console.error(error);
-    } //respuestas negativas del back (errores)
-  })
+  // 👇 Nuevo: cantidad máxima de productos que se muestran
+  maxProducts = 4;
+
+  // 👇 Getter que devuelve solo los primeros N productos
+  get limitedProducts(): Product[] {
+    return this.allProducts.slice(0, this.maxProducts);
   }
-ngOnInit(): void {
-  this.showProducts()
-}
+
+  showProducts() {
+    this._productService.getProducts().subscribe({
+      next: (response: any) => {
+        this.allProducts = response.data;
+        console.log(this.allProducts);
+      },
+      error: (error: any) => {
+        console.error(error);
+      }
+    });
+  }
+
+  ngOnInit(): void {
+    this.showProducts();
+  }
 }

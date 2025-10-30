@@ -1,7 +1,10 @@
 export interface Reviews {
-
-    user : string,
-    score : number,
-    comments :string
+    id: number;
+    userId: string,
+    user: string,
+    comments: string
+    score: number,
+    date: string;
+    editable?: boolean;
 
 }

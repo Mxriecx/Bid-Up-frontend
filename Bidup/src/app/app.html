@@ -1,20 +1,20 @@
 <!-- Encabezado en mi app -->
-@if(!isInvisible()){
+
 
 <header>
+    @if(!admin()){
   <app-navbar></app-navbar>
+  }
 </header>
 
-}
 
 <!-- el contenido de sus rutas -->
-<router-outlet />
+<router-outlet/> 
 
-<!-- Pie de página de mi app -->
-@if(isInvisible()){
 
+@if(!admin()){
 <footer>
-  <app-footer></app-footer>
-</footer>
+   <app-footer></app-footer>
 
+</footer>
 }

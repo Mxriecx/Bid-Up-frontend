@@ -1,0 +1,10 @@
+.btn-info{
+    background-color: wheat;
+    border-color: #122F51;
+    font-weight: 900;
+}
+
+.btn-danger{
+     font-weight: 900;
+     border: red;
+}

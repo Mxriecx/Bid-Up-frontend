@@ -1,23 +1,11 @@
-<main>
-  <form class="formulario" [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
-    <h1>INICIAR SESIÓN</h1>
+<section class="Form-login">
 
-    <div class="mb-3 nombre">
-      <label for="exampleInputEmail1" class="form-label letra">Correo Electrónico</label>
-      <input type="email" class="form-control" formControlName="emailLogin" placeholder="email" />
-    </div>
+  <h5>Ingresa</h5>
+  <input class="controls"   type="text" name="user" value="" placeholder="Usuario">
+  <input class="controls"   type="password" name="Password" value="" placeholder="Contraseña">
+  <input class="buttons" type="submit" name="" value="Ingresar">
+  <p><a href="#">Olvidaste tu contraseña</a></p>
 
-    <div class="mb-3 nombre">
-      <label for="exampleInputPassword1" class="form-label letra">Contraseña</label>
-      <input
-        type="password"
-        class="form-control"
-        formControlName="passwordLogin"
-        placeholder="Contrasena"
-      />
-    </div>
+</section>
 
-    <button type="submit" class="btn fin">Ingresar</button>
-    <!-- <p class="olvido"><a href="#">Olvidaste tu contrasena</a></p> -->
-  </form>
-</main>
+
