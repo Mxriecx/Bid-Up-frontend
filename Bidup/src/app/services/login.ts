@@ -1,13 +1,10 @@
-
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Credencials } from '../interfaces/credencials';
 import { environment } from '../../environments/environment';
-import { jwtDecode } from 'jwt-decode'; // para decodificar el token y poder saber si inicio sesion un admin o no 
-import { Router } from '@angular/router';
-import { signal } from '@angular/core'; //redireccionar a otras paginas al iniciar sesion
-
-
+import { jwtDecode } from 'jwt-decode'; //para decodificar el token y poder saber si inicio sesion un admin o no
+import { Router } from '@angular/router'; //para redireccionar a otras paginas al iniciar sesiòn
+import { signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -17,40 +14,45 @@ export class LoginService {
 
   private _httpClient = inject(HttpClient);
   private _router = inject(Router);
-  private apiURL = environment.appUrl;
-
-  
-  isLoggedInSignal = signal<boolean>(false);
+  private apiUrl = environment.appUrl;
+  // señal para el estado de inicio de sesión
+  isLoggedInSignal = signal<boolean>(false);  //Las señales son reactivas notifican los cambios de estado
   isAdminSignal = signal<boolean>(false);
 
-
-  login(credencialesIngreso: Credencials) {
-    return this._httpClient.post(this.apiURL + "/login", credencialesIngreso)
+  // 2. desarrollar la lógica del servicio
+  // 2.1 La petición POST
+  login(loginCredentials : Credencials){
+    return this._httpClient.post(`${this.apiUrl}/login`, loginCredentials);
   }
 
-  getToken() {
-   
 
-    return localStorage.getItem("token");
+  // 2.2 Decirle al navegador de donde va a obtener el token
+  getToken(){
+    // viene del localStorage -> almacenamiento temporal
+    return localStorage.getItem('token'); //obtenemos el token del navegador
+    
   }
 
-  isAdmin() {
+  // 2.3 Validar si es rol de administrador o no
+  // este método retorna TRUE o FALSE -> dependiendo de si es administrador o no
+  isAdmin(){
+    // primero necesito obtener el token
     const token = this.getToken();
-    if (token) {
-      const decoded: any = jwtDecode(token);
+    // En caso de que sí haya token, decodifiquelo
+    if(token){
+      const decoded : any = jwtDecode(token);
       this.isAdminSignal.set(decoded.admin === true ? true : false);
       return decoded.admin === true ? true : false;
-
-    } else {
-      console.log("no se encontro token");
+    }else{
+      console.log('No se encontró token');
       this.isAdminSignal.set(false);
       return false;
     }
   }
 
-  redirecTo() {
-    if (this.isAdmin()) {
-      this._router.navigate(["/admin"]);
+redirecTo(){
+  if(this.isAdmin()){
+    this._router.navigate(["/admin"]);
 
     } else {
       this._router.navigate(["/"])
@@ -58,24 +60,25 @@ export class LoginService {
     }
   }
 
-  salirLogout() {
-    localStorage.removeItem("token");
+  // 2.5 el cierre de sesión
+  logout(){
+    localStorage.removeItem('token');
     this.isLoggedInSignal.set(false);
     this.isAdminSignal.set(false);
-    alert("cierre de sesion exitoso");
-    this._router.navigate(["/login"]);
+    alert('Cierre de sesión exitoso, Vuelve pronto!');
+    this._router.navigate(['/login']);
   }
 
-  isLoggedIn() {
-    //this.isLoggedInSignal.set(this.getToken()? true : false)
-    if (this.getToken()) {
-
-      this.isLoggedInSignal.set(true);
-
-    } else {
+  //2.6 Validar si el usuario ya inició sesión
+  isLoggedIn(){
+    if(this.getToken()){
+      this.isLoggedInSignal.set(true);  
+      return true;
+    } else{
       this.isLoggedInSignal.set(false);
+      return false;
     }
-    return this.getToken() ? true : false;
 
-  }
+    //return this.getToken() ? true : false;
+  }//si no hay token, no esta logueado, si sí lo hay, entonces sí inició sesión
 }

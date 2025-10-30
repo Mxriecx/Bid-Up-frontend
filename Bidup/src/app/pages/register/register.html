@@ -1,22 +1,80 @@
+<main>
+    <form class="formulario" [formGroup]="registerForm" (ngSubmit)="handleSubmit()">
 
-<section class="register-section">
-  <form class="Form-login" action="/registro" method="post" novalidate>
-    <h5>Regístrate</h5>
 
-    <!-- Campos obligatorios -->
-    <input class="controls" type="text" name="name" placeholder="Nombre completo" required>
-    <input class="controls" type="number" name="age" placeholder="Edad" required>
-    <input class="controls" type="email" name="email" placeholder="Correo electrónico" required>
-    <input class="controls" type="text" name="username" placeholder="Usuario" required>
-    <input class="controls" type="password" name="password" placeholder="Contraseña" required>
-    
+        <h1>Crear cuenta</h1>
 
-    <!-- Campos opcionales -->
-    <input class="controls" type="text" name="nickname" placeholder="Apodo (opcional)">      
-    
+        <div class="mb-3 nombre">
+            <label for="nombre" class="form-label">Nombre completo</label>
+            <input 
+            type="text" 
+            class="form-control" 
+            id="nombre" 
+            formControlName="name"
+            placeholder="Ingresa tu nombre completo"
+            reuired
+            />
+        </div>
 
-    <input class="buttons" type="submit" value="Crear cuenta">
-    <p><a href="/login">¿Ya tienes cuenta? Inicia sesión</a></p>
-  </form>
-</section>
+        <div class="mb-3 nombre">
+            <label for="username" class="form-label">Username</label>
+            <input 
+            type="text" 
+            class="form-control" 
+            id="username" 
+            formControlName="username"
+            placeholder="Ingrsa tu nombre de usuario"
+            required
+            />
+        </div>
 
+        <div class="mb-3 nombre">
+            <label for="correo" class="form-label">Correo</label>
+            <input 
+            type="email" 
+            class="form-control" 
+            id="correo" 
+            formControlName="email"
+            autocomplete="email"
+            placeholder="Ingresa tu correo"
+            required
+            />
+        </div>
+
+
+        <div class="mb-3 nombre">
+            <label for="edad" class="form-label">edad</label>
+            <input 
+            type="number" 
+            class="form-control" 
+            id="edad" 
+            formControlName="age"
+            placeholder="Ingresa tu edad"
+            required
+            />
+        </div>
+
+        <div class="mb-3 nombre">
+            <label for="contrasena" class="form-label">Contraseña</label>
+            <input 
+            type="password" 
+            class="form-control" 
+            id="contrasena" 
+            formControlName="password"
+            autocomplete="new-password"
+            placeholder="Ingresa tu contraseña"
+            />
+        </div>
+
+        <div class="mb-3 nombre">
+            <label for="imagen" class="form-label">Foto de perfil</label>
+            <input 
+            type="file" 
+            class="form-control" 
+            id="imagen" 
+            formControlName="image">
+        </div>
+
+        <button type="submit" class="btn fin">registrate</button>
+    </form>
+</main>

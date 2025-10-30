@@ -1,1 +1,54 @@
-<p>reviews works!</p>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<div class="reviews-container">
+  @for (Reviews of reviews; track $index) {
+  <div class="reviews-card">
+    <h2><span>Bid</span> Up Reviews</h2>
+    <!-- Reseñas existentes -->
+    <div class="review">
+      <img src="https://i.pinimg.com/originals/dd/b1/ea/ddb1ea363026e253acb9973594e1ce38.jpg" alt="user">
+      <div class="review-text">
+        <h3>{{ Reviews.user }}</h3>
+
+        <div class="stars">
+          <span *ngFor="let number of  [1,2,3,4,5]" (click)="Reviews.userId === currentUserId ? setStars(Reviews, number) : null">
+            <i class="fa" [ngClass]="Reviews.score >= number ? 'fa-star' : 'fa-star-o'"></i>
+          </span>
+        </div>
+
+        <textarea *ngIf="Reviews.editable" [(ngModel)]="Reviews.comments"></textarea>
+        <p *ngIf="!Reviews.editable">{{ Reviews.comments }}</p>
+
+        <span class="date">{{ Reviews.date }}</span>
+
+        <button class="btn small" 
+        *ngIf="Reviews.userId === currentUserId" 
+        (click)="Reviews.editable ? saveReview(Reviews) : editReview(Reviews)">
+          {{ Reviews.editable ? 'Save' : 'Edit' }}
+        </button>
+      
+      </div>
+    </div>
+    
+    
+    <!-- Formulario nueva reseña -->
+    <div class="new-review reviews">
+      <h3>Nueva Reseña</h3>
+      <input type="text" placeholder="Escribe tu nombre" [(ngModel)]="newReview.user">
+      <textarea placeholder="Escribe tu comentario" [(ngModel)]="newReview.comments"></textarea>
+      
+      <div class="stars">
+        <span *ngFor="let s of [1,2,3,4,5]" (click)="setStars(newReview, s)">
+          <i class="fa" [ngClass]="newReview.score >= s ? 'fa-star' : 'fa-star-o'"></i>
+        </span>
+      </div>
+      
+      <button class="btn" (click)="addReview()">Enviar Reseña</button>
+    </div>
+  </div>
+}
+</div>
+
+

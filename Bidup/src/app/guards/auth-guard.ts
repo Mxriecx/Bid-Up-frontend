@@ -5,6 +5,7 @@ import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
+
 export const authGuard: CanActivateFn = (route, state) => {
   const _loginService = inject(LoginService);
   const _router = inject(Router);
