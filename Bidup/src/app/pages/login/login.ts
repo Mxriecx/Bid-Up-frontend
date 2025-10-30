@@ -1,9 +1,8 @@
-import { Component , inject } from '@angular/core';
-// Formularios reactivos -> cada cosa que el usuario escriba sea reconocido por el sistema
+import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Credencials } from '../../interfaces/credencials';
 import { LoginService } from '../../services/login';
-import Swal from 'sweetalert2'; //libreria para mostrar alertas bonitas
+import  Swal  from "sweetalert2";
 
 @Component({
   selector: 'app-login',
@@ -11,93 +10,69 @@ import Swal from 'sweetalert2'; //libreria para mostrar alertas bonitas
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
+
 export class Login {
 
-  // Variables e injeccion de servicios
-  private _loginService = inject(LoginService);
+  private _loginservice = inject(LoginService);
 
-  // validadores con Angular
-  loginForm = new FormGroup({
-    emailLogin: new FormControl('', [Validators.required, Validators.email]),
-    passwordLogin: new FormControl('', [Validators.required, Validators.minLength(4)])
+
+  LoginForm = new FormGroup({
+    emailLogin: new FormControl("",[Validators.required,Validators.email]),
+    passwordLogin: new FormControl("",[Validators.required, Validators.minLength(3)])
   })
 
   // manejo de eventos
   handleSubmit() {
-    // const email = this.loginForm.value.emailLogin
-    // const password = this.loginForm.value.passwordLogin
-    // console.log(email, password)
-    if (this.loginForm.invalid) {
-<<<<<<< HEAD
-      this.loginForm.markAllAsTouched();
-      return;
-=======
-      this.loginForm.markAllAsTouched(); //poder agregar estilos -> marcamos todos los inputs como activados
-      return;//pare acá y no siga
->>>>>>> 59ce41b2738450c1645645344a3eb95925819bcb
+
+    //const email =this.LoginForm.value.emailLogin;
+    //const password = this.LoginForm.value.passwordLogin;
+    //console.log(email,password);
+
+    if(this.LoginForm.invalid){
+      this.LoginForm.markAllAsTouched();
+      return; // poder agregar estilos 
     }
 
     const credenciales: Credencials = {
-      emaillogin: this.loginForm.value.emailLogin || "",
-      passwordlogin: this.loginForm.value.passwordLogin || ""
+      emaillogin: this.LoginForm.value.emailLogin || "",
+      passwordlogin: this.LoginForm.value.passwordLogin || ""
 
     }
 
-<<<<<<< HEAD
-    console.log("credenciales de Ingreso", credenciales);
-    
-    this._loginservice.login(credenciales).subscribe({
-=======
-    console.log('Credenciales para Login', credenciales);
+    console.log("credenciales de ingreso", credenciales);
+    //logica de la peticion del backend para el incio de sesion
 
-    this._loginService.login(credenciales).subscribe({
-      // manejo de la respuesta o error
->>>>>>> 59ce41b2738450c1645645344a3eb95925819bcb
+    this._loginservice.login(credenciales).subscribe({
       next: (res: any) => {
         console.log(res);
+
+
         if (res) {
-<<<<<<< HEAD
-
+          // guardar el token en el local storage
           localStorage.setItem("token", res.token);
-
-=======
-          // guardar el token en el local Storage
-          localStorage.setItem('token', res.token);
-
-          // mensaje de respuesta
->>>>>>> 59ce41b2738450c1645645344a3eb95925819bcb
+       
           Swal.fire({
-            title: "Bien!",
-            text: res.mensaje,
+            title: "Drag me!",
             icon: "success",
             draggable: true
           });
-          // redireción
-          this._loginService.redirecTo();
+
+          this._loginservice.redirecTo();
         }
       },
       error: (err: any) => {
-        console.error(err.error.mensaje);
         Swal.fire({
-<<<<<<< HEAD
-          title: "Ha ocurrido un error, correo o contrasena incorrectos",
-=======
-          title: "Oops!",
->>>>>>> 59ce41b2738450c1645645344a3eb95925819bcb
-          text: err.error.mensaje,
-          icon: "error",
-          draggable: true
-        });
-<<<<<<< HEAD
+            title: "Stop!",
+            text: err.error.mensaje,
+            icon: "error",
+            draggable: true
+          });
       },
     })
 
 
 
 
-=======
-      }
-    });
->>>>>>> 59ce41b2738450c1645645344a3eb95925819bcb
   }
+
 }
