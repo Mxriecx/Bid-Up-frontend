@@ -1,23 +1,34 @@
-<form class="Form-login" [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
-  <h5>Ingresa</h5>
-  <input
-    class="controls"
-    type="text"
-    formControlName="emailLogin"
-    autocomplete="username"
-    placeholder="Usuario"
-    required
-    [class.is-invalid]="loginForm.get ('emailLogin')?.invalid" 
-  >
-  <input
-    class="controls"
-    type="password"
-    formControlName="passwordLogin"
-    placeholder="Contrasena"
-    autocomplete="current-password"
-    required
-    [class.is-invalid]="loginForm.get('passwordLogin')?.touched && loginForm.get('passwordLogin')?.invalid "
-  >
-  <input class="buttons" type="submit" value="Ingresar">
-  <p><a href="#">Olvidaste tu contrasena</a></p>
-</form>
+<main>
+    <form class="formulario" [formGroup]="LoginForm" (ngSubmit)="handleSubmit()">
+
+        <h1>Inicio de Sesion</h1>
+
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input 
+
+            type="email" 
+            class="form-control" 
+            formControlName="emailLogin"
+            placeholder="Ingresa tu correo"
+            [class.is-invalid]="LoginForm.get('emailLogin')?.invalid"
+            >
+
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input 
+
+            type="password" 
+            class="form-control" 
+            formControlName="passwordLogin"
+            autocomplete="current-password"
+            placeholder="Ingrese su contrasena"
+            >
+
+        </div>
+
+        <button type="submit" class="btn" >Submit</button>
+    </form>
+</main>

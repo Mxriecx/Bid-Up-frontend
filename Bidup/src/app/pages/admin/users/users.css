@@ -14,3 +14,6 @@
 .modal-content {
   border-radius: 10px;
 }
+img {
+  object-fit: contain;
+}

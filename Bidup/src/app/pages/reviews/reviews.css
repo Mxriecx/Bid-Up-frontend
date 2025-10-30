@@ -1,0 +1,186 @@
+.reviews-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: #0b1736;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Tarjeta principal */
+.reviews-card {
+  background: #0e1c40;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 450px;
+  color: white;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+.reviews-card h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.reviews-card h2 span {
+  color: #f7b500;
+}
+
+/* Reseña individual */
+.review {
+  display: flex;
+  align-items: flex-start;
+  background: #11224f;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.review img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  margin-right: 1rem;
+  border: 2px solid #f7b500;
+}
+
+.review-text {
+  flex: 1;
+  min-width: 200px;
+}
+
+.review-text h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.stars {
+  color: #f7b500;
+  margin: 3px 0;
+  cursor: pointer;
+}
+
+.review-text p,
+.review-text textarea {
+  font-size: 0.9rem;
+  margin: 3px 0;
+  width: 100%;
+  background: transparent;
+  color: white;
+  border: none;
+  resize: none;
+  outline: none;
+}
+
+.date {
+  font-size: 0.75rem;
+  color: #ccc;
+}
+
+.btn {
+  width: 100%;
+  background: #f7b500;
+  border: none;
+  color: #0b1736;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #ffd35a;
+}
+
+/* Formulario nueva reseña */
+.new-review {
+  margin-top: 1.5rem;
+}
+
+.new-review input,
+.new-review textarea {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: #1a2d5e;
+  color: white;
+}
+
+.new-review input::placeholder,
+.new-review textarea::placeholder {
+  color: #aaa;
+}
+
+.reviews {
+  border: solid 2px transparent;
+}
+
+/* 🧩 Responsividad */
+@media (max-width: 1024px) {
+  .reviews-card {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .reviews-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+  }
+
+  .reviews-card {
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .review {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .review img {
+    margin: 0 0 1rem 0;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .reviews-card h2 {
+    font-size: 1.4rem;
+  }
+
+  .review-text h3 {
+    font-size: 1rem;
+  }
+
+  .review-text p {
+    font-size: 0.85rem;
+  }
+
+  .stars i {
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+}

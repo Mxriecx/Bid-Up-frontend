@@ -1,22 +1,90 @@
+<main>
+  <form class="formulario" [formGroup]="registerForm" (ngSubmit)="handleSubmit()">
 
-<section class="register-section">
-  <form class="Form-login" action="/registro" method="post" novalidate>
-    <h5>Regístrate</h5>
+    <h1>Crear cuenta</h1>
 
-    <!-- Campos obligatorios -->
-    <input class="controls" type="text" name="name" placeholder="Nombre completo" required>
-    <input class="controls" type="number" name="age" placeholder="Edad" required>
-    <input class="controls" type="email" name="email" placeholder="Correo electrónico" required>
-    <input class="controls" type="text" name="username" placeholder="Usuario" required>
-    <input class="controls" type="password" name="password" placeholder="Contraseña" required>
-    
+    <!-- Nombre -->
+    <div class="mb-3 nombre">
+      <label for="nombre" class="form-label">Nombre completo</label>
+      <input 
+        type="text"
+        id="nombre"
+        class="form-control"
+        formControlName="name"
+        placeholder="Ingresa tu nombre completo"
+        required
+      />
+    </div>
 
-    <!-- Campos opcionales -->
-    <input class="controls" type="text" name="nickname" placeholder="Apodo (opcional)">      
-    
+    <!-- Username -->
+    <div class="mb-3 nombre">
+      <label for="username" class="form-label">Nombre de usuario</label>
+      <input 
+        type="text"
+        id="username"
+        class="form-control"
+        formControlName="username"
+        placeholder="Ingresa tu nombre de usuario"
+        required
+      />
+    </div>
 
-    <input class="buttons" type="submit" value="Crear cuenta">
-    <p><a href="/login">¿Ya tienes cuenta? Inicia sesión</a></p>
+    <!-- Correo -->
+    <div class="mb-3 nombre">
+      <label for="correo" class="form-label">Correo electrónico</label>
+      <input 
+        type="email"
+        id="correo"
+        class="form-control"
+        formControlName="email"
+        placeholder="Ingresa tu correo"
+        required
+      />
+    </div>
+
+    <!-- Edad -->
+    <div class="mb-3 nombre">
+      <label for="edad" class="form-label">Edad</label>
+      <input 
+        type="number"
+        id="edad"
+        class="form-control"
+        formControlName="age"
+        placeholder="Ingresa tu edad"
+      />
+    </div>
+
+    <!-- Contraseña -->
+    <div class="mb-3 nombre">
+      <label for="contrasena" class="form-label">Contraseña</label>
+      <input 
+        type="password"
+        id="contrasena"
+        class="form-control"
+        formControlName="password"
+        placeholder="Crea una contraseña (mínimo 8 caracteres)"
+        required
+      />
+    </div>
+
+    <!-- Imagen -->
+    <div class="mb-3 nombre">
+      <label for="imagen" class="form-label">Foto de perfil</label>
+      <input 
+        type="file"
+        id="imagen"
+        class="form-control"
+        (change)="onFileSelected($event)"
+        accept="image/*"
+      />
+    </div>
+
+    <!-- Vista previa de imagen -->
+    <div class="preview-container" *ngIf="previewUrl">
+      <img [src]="previewUrl" alt="Vista previa de imagen" class="preview-img" />
+    </div>
+
+    <button type="submit" class="btn fin">Registrarse</button>
   </form>
-</section>
+</main>
 

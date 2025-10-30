@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Card } from '../../components/card/card';
 import { Carrusel } from '../../components/carrusel/carrusel';
+import { Card } from '../../components/card/card';
 
 
 @Component({

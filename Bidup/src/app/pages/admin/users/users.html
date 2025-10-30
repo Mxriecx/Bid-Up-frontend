@@ -3,7 +3,7 @@
 <div class="container d-flex flex-wrap gap-5 justify-content-center">
   @for (user of allUsers; track $index) {
   <div class="card shadow-sm p-3" style="width: 18rem;">
-    <img [src]="user.image" alt="imagen" class="img-fluid rounded mb-2" />
+    <img [src]="baseUrl + user.image" alt="imagen" class="img-fluid rounded mb-2" />
     <h5 class="fw-bold">{{ user.name }}</h5>
     <p><strong>Usuario:</strong> {{ user.username }}</p>
     <p><strong>Role:</strong> {{ user.role }}</p>

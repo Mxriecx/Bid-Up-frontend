@@ -13,8 +13,9 @@ export class UserService {
   private _httpClient = inject(HttpClient);
   private apiUrl = environment.appUrl;
 
-  postUser(newUser: User) {
-    return this._httpClient.post(this.apiUrl + "/users/crear", newUser);
+   constructor(private _http: HttpClient) {}
+  postUser(formData: FormData) {
+    return this._httpClient.post(this.apiUrl + "/users/crear", formData);
   }
 
   getUser() {
