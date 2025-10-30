@@ -6,7 +6,7 @@
       <img src="logo.png" alt="bid up logo" class="img-fluid" style="max-height: 32px;">
     </a>
 
-    <!-- Toggler (solo móvil) -->
+    <!-- Toggler (solo movil) -->
     <button
       class="navbar-toggler border-0 text-white d-lg-none"
       type="button"
@@ -37,16 +37,16 @@
         </form>
 
         <!-- CTA -->
-        <a href="#" class="btn btn-warning rounded-pill fw-semibold px-3">
-          Subastar un artículo
-        </a>
+        <button (click)="popup()" class="btn agregarProduc btn-warning rounded-pill fw-semibold px-3">
+          Subastar un articulo
+        </button>
 
         <!-- Lista de enlaces -->
         <nav class="mt-2 mt-lg-0">
           <ul class="navbar-nav ms-lg-3 text-center text-lg-start">
             <li class="nav-item"><a class="nav-link text-white" routerLink="/">Inicio</a></li>
-            <li class="nav-item"><a class="nav-link text-white" routerLink="/register">¡Regístrate!</a></li>
-            <li class="nav-item"><a class="nav-link text-white" routerLink="/login">Ingresa</a></li>
+            <li class="nav-item"><a class="nav-link text-white" routerLink="/register">Registrate!</a></li>
+            <li class="nav-item"><a class="nav-link text-white" routerLink="/login">Inicia Sesion</a></li>
             <li class="nav-item"><a class="nav-link text-white" routerLink="/products">Productos</a></li>
             <li class="nav-item"><a class="nav-link text-white" routerLink="/reviews">Opiniones</a></li>
             <li class="nav-item"><a class="nav-link text-white" routerLink="/admin">Dashboard</a></li>
@@ -54,7 +54,7 @@
           </ul>
         </nav>
 
-        <!-- Tres líneas en pastilla (siempre visible en desktop) -->
+        <!-- Tres lineas en pastilla (siempre visible en desktop) -->
         <a href="#" class="d-none d-lg-inline-flex align-items-center justify-content-center rounded-pill"
            style="width:56px;height:36px;background:#fff;">
           <i class="bi bi-list" style="font-size:1.4rem;color:#082A40;line-height:1;"></i>
@@ -63,3 +63,89 @@
     </div>
   </div>
 </nav>
+
+@if (showpopup) {
+  <div class="modal-host" role="dialog" aria-modal="true" aria-labelledby="createProductTitle" (click)="popup()">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+      <header class="modal-header">
+        <h2 id="createProductTitle" class="h5 m-0">Crear nuevo producto</h2>
+        <button type="button" class="icon-close" aria-label="Cerrar" (click)="popup()">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </header>
+
+      <!-- Conectado a Reactive Forms -->
+      <form class="modal-body" [formGroup]="productForm" (ngSubmit)="submitProduct($event)">
+        <label class="form-label fw-semibold" for="productName">Nombre del producto</label>
+        <input
+          id="productName"
+          type="text"
+          class="form-control"
+          placeholder="Ej. Camara fotografica"
+          formControlName="title"
+          required>
+
+        <label class="form-label fw-semibold" for="productDescription">Descripcion</label>
+        <textarea
+          id="productDescription"
+          class="form-control"
+          rows="3"
+          placeholder="Describe tu producto y su estado"
+          formControlName="description"
+          required></textarea>
+
+        <div class="row g-3">
+          <div class="col-12 col-md-6">
+            <label class="form-label fw-semibold" for="productPrice">Precio inicial</label>
+            <input
+              id="productPrice"
+              type="number"
+              min="0"
+              step="0.01"
+              class="form-control"
+              placeholder="0.00"
+              formControlName="initialPrice"
+              required>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <label class="form-label fw-semibold" for="productCategory">Categoria</label>
+            <select
+              id="productCategory"
+              class="form-select"
+              formControlName="categories"
+              required>
+              <option value="" disabled selected>Selecciona una categoria</option>
+              <option value="Tecnologia">Tecnologia</option>
+              <option value="moda">arte</option>
+              <option value="Hogar">Hogar</option>
+              <option value="Electrodomesticos">Electrodomesticos</option>
+            </select>
+          </div>
+        </div>
+
+        <label class="form-label fw-semibold" for="productImage">Imagen (archivo opcional)</label>
+        <input
+          id="productImage"
+          accept="image/*"
+          type="file"
+          class="form-control"
+          (change)="onFileSelected($event)">        
+
+        <!-- opcional: vendedor y estado -->
+        <!--
+        <label class="form-label fw-semibold mt-2" for="seller">Vendedor</label>
+        <input id="seller" type="text" class="form-control" formControlName="seller" placeholder="ID del vendedor">
+        <label class="form-label fw-semibold mt-2" for="state">Estado</label>
+        <input id="state" type="text" class="form-control" formControlName="state" placeholder="nuevo, usado...">
+        -->
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-light" (click)="popup()">Cancelar</button>
+          <button type="submit" class="btn crear btn-warning fw-semibold">Crear producto</button>
+        </div>
+      </form>
+    </div>
+  </div>
+}
+

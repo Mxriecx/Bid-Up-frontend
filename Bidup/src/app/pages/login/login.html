@@ -4,13 +4,19 @@
     class="controls"
     type="text"
     formControlName="emailLogin"
+    autocomplete="username"
     placeholder="Usuario"
+    required
+    [class.is-invalid]="loginForm.get ('emailLogin')?.invalid" 
   >
   <input
     class="controls"
     type="password"
     formControlName="passwordLogin"
     placeholder="Contrasena"
+    autocomplete="current-password"
+    required
+    [class.is-invalid]="loginForm.get('passwordLogin')?.touched && loginForm.get('passwordLogin')?.invalid "
   >
   <input class="buttons" type="submit" value="Ingresar">
   <p><a href="#">Olvidaste tu contrasena</a></p>

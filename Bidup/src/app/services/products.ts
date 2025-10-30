@@ -18,10 +18,8 @@ export class Productservice {
 
  
 
-  postProduct(newProduct : Product){
-
-    return this._httpClient.post(this.apiUrl + '/products/crear',newProduct)
-
+  postProduct(productToCreate: FormData | Product) {
+    return this._httpClient.post(this.apiUrl + '/products/crear', productToCreate);
   }
 
 
@@ -29,8 +27,8 @@ export class Productservice {
     return this._httpClient.get(this.apiUrl + '/products/mostrar');
   }
 
-
-  putProducts (modifyProduct : Product, id : string){
+  //peticion put
+  putProducts (modifyProduct :FormData | Product, id : string){
     return this._httpClient.put(this.apiUrl + '/products/actualizar/' + id , modifyProduct )
   }
 
