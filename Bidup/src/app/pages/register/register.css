@@ -1,20 +1,19 @@
 main {
-  /* border: solid red; */
   width: 100vw;
   height: auto;
 }
 
 .formulario {
-  /* border: solid blue; */
   box-shadow: 0 0 50px #122f51;
   width: 50%;
-  height: 40%;
-  margin: 12% auto;   
+  height: auto;
+  margin: 12% auto;
   display: flex;
   flex-direction: column;
   gap: 5%;
   background-color: var(--colorForm);
   border-radius: 3%;
+  padding-bottom: 40px; /* mejora espacio */
 }
 
 .btn {
@@ -22,14 +21,12 @@ main {
   color: white;
   font-weight: 300;
   width: 50%;
-  height: 5%;
-  margin: 15% auto;
+  height: auto;
+  padding: 12px;
+  margin: 15% auto 5% auto;
 }
 
-.fin {
-  font-weight: 900;
-  font-size: 25px;
-}
+
 
 h1 {
   font-size: 30px;
@@ -38,12 +35,12 @@ h1 {
   padding-top: 5%;
   margin-bottom: 8%;
 }
+
 .nombre {
-  /* border: solid red; */
-  height: 20%;
+  height: auto;
   width: 75%;
   border: solid var(--color-principal);
-  margin: 5px auto 5px auto;
+  margin: 5px auto;
   padding: 10px;
   font-size: 20px;
 }
@@ -61,4 +58,59 @@ h1 {
   border-radius: 50%;
   border: 3px solid #0e3b68;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* -------------------------------------- */
+/* 📱 Celulares (pantallas pequeñas) */
+/* -------------------------------------- */
+@media (max-width: 480px) {
+
+  .formulario {
+    width: 90%;
+    margin: 20% auto;
+    padding: 20px 0;
+    border-radius: 5%;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+
+  .nombre {
+    width: 85%;
+    font-size: 16px;
+    padding: 8px;
+  }
+
+  .btn {
+    width: 70%;
+    font-size: 18px;
+    margin-top: 10%;
+  }
+
+  
+
+  .preview-img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* -------------------------------------- */
+/* 🟦 Tablets (pantallas medianas) */
+/* -------------------------------------- */
+@media (max-width: 768px) {
+
+  .formulario {
+    width: 70%;
+    margin: 18% auto;
+  }
+
+  .nombre {
+    width: 80%;
+  }
+
+  .btn {
+    width: 60%;
+  }
 }
